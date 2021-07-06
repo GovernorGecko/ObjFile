@@ -1,2 +1,5 @@
 # ObjFile
 .obj file type.
+
+http://paulbourke.net/dataformats/obj/
+https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-obj-file-format.html
