@@ -1,0 +1,2 @@
+# ObjFile
+.obj file type.
