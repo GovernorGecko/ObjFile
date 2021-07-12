@@ -8,14 +8,23 @@ from src.MultiD.src.vector import Vector3
 
 g = Generator("test")
 
-t = Triangle(
+t1 = Triangle(
     [
         Vector3(1.0, 1.0, 1.0),
-        Vector3(1.0, 1.0, 0.9),
+        Vector3(1.0, 1.0, 0.0),
         Vector3(0.0, 1.0, 1.0)
     ]
 )
 
-g.add_triangle(t)
+t2 = Triangle(
+    [
+        Vector3(1.0, 1.0, 1.0),
+        Vector3(1.0, 1.0, 0.0),
+        Vector3(0.0, 1.0, 0.0)
+    ]
+)
+
+g.add_triangle(t1)
+g.add_triangle(t2)
 
 print(g)
