@@ -6,7 +6,7 @@ from src.generator import Generator
 from src.MultiD.src.triangle import Triangle
 from src.MultiD.src.vector import Vector3
 
-g = Generator("test")
+g = Generator("test", normals=True)
 
 t1 = Triangle(
     [

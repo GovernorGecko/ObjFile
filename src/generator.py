@@ -7,6 +7,8 @@ from .MultiD.src.triangle import Triangle
 
 
 class Generator():
+    """
+    """
 
     __slots__ = [
         "__name", "__colors", "__normals", "__texcoords",
@@ -43,7 +45,7 @@ class Generator():
         """
         """
 
-        return self.get_obj_data()
+        return self.get_obj_as_string()
 
     def add_triangle(self, triangle):
         """
@@ -52,13 +54,17 @@ class Generator():
         if not isinstance(triangle, Triangle):
             raise ValueError("Triangle must be of type Triangle")
 
-        # Triangles are made up of three pieces of vertex data
+        # Face Data to add to our faces
+        face_data = []
+
+        # Triangles are made up of three pieces ofvertex data
         for i in range(0, 3):
 
-            face_data = []
+            # List of Vertexes to Face Indexes
+            vertex_face_indexes = []
 
             # Positions
-            face_data.append(
+            vertex_face_indexes.append(
                 self.__add_vertex_data(
                     triangle.get_positions()[i],
                     self.__v
@@ -67,7 +73,7 @@ class Generator():
 
             # Normals
             if self.__normals:
-                face_data.append(
+                vertex_face_indexes.append(
                     self.__add_vertex_data(
                         triangle.get_normals(),
                         self.__vn
@@ -75,11 +81,14 @@ class Generator():
                 )
 
             # Colors
-            
+
             # TexCoords
 
-            # Add to Faces
-            self.__faces.append(face_data)
+            # Add to Face Data
+            face_data.append(vertex_face_indexes)
+
+        # Add to Faces
+        self.__faces.append(face_data)
 
     def __add_vertex_data(self, vertex_data, vertex_list):
         """
@@ -98,15 +107,37 @@ class Generator():
             vertex_list.append(vertex_data)
         return face_data
 
-    def get_obj_data(self):
+    def get_obj_as_string(self):
         """
         """
 
-        return (
+        # Base Obj
+        obj_as_string = (
             f"o {self.__name}\n"
             f"\n"
             f"# Vertex list\n"
-            f"{self.__faces}"
-            f"{self.__v}"
-            f"{self.__vn}"
+            f"\n"
         )
+
+        # Iterate Vectors
+        for v in self.__v:
+            obj_as_string += 'v ' + ' '.join(map(str, v.get_list())) + "\n"
+
+        # Add Material
+        obj_as_string += "\nusemtl Default\n"
+
+        # Iterate Faces
+        obj_as_string += "\n".join(
+            [" ".join(
+                ["/".join(map(str, k)) for k in j]
+            ) for j in self.__faces]
+        )
+
+        # Return
+        return obj_as_string
+
+    def save(self, path):
+        """
+        """
+
+        print(path)
