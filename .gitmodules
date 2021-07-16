@@ -1,0 +1,3 @@
+[submodule "src/MultiD"]
+	path = src/MultiD
+	url = https://github.com/GovernorGecko/MultiD.git
