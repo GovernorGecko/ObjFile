@@ -168,10 +168,10 @@ class Generator():
             int of which face this Vector2 or Vector3 is at.
         """
 
-        if not isinstance(vector_data, (Vector3, Vector2)):
-            raise ValueError("Vertex Data must be a Vector3 or Vector2.")
+        if not type(vector_data).__name__ in ["Vector3", "Vector2"]:
+            raise ValueError("Vector Data must be a Vector3 or Vector2.")
         elif not isinstance(vector_list, list):
-            raise ValueError("Vertex List must be a list.")
+            raise ValueError("Vector List must be a list.")
 
         face_data = None
         if vector_data in vector_list:
