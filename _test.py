@@ -8,7 +8,7 @@ from src.MultiD.src.vector import Vector2, Vector3
 
 # Create a Tests
 
-g = Generator("test", image_name="test.jpg", normals=True, texcoords=True)
+g = Generator("test", image_name="test.jpg")
 
 t1 = Triangle(
     [

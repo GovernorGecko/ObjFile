@@ -3,9 +3,6 @@
 A simple implementation, taking Positions (optionally TexCoords) and returning the resulting .obj and .mtl (if applicable) files.
 
 # TODO
-- TexCoords and mtl
-- Auto TexCoords instead of Bool
-- Cleanup
 - Default Material Components
 - Update Material Components
 
