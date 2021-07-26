@@ -190,7 +190,7 @@ class Generator():
         # We have an image name?
         if self.__image_name is None:
             return ""
-        
+
         # Base mtl
         mtl_as_string = "newmtl material0\n"
 
@@ -204,7 +204,6 @@ class Generator():
             map(str, self.__kd.get_list())
         ) + "\n"
 
-        """
         # Specular
         mtl_as_string += "Ks " + " ".join(
             map(str, self.__ks.get_list())
@@ -217,15 +216,6 @@ class Generator():
             f"Ni {self.__ni}\n"
             f"d {self.__d}\n"
             f"illum {self.__illum}\n"
-            f"map_Kd {self.__image_name}"
-        )
-        """
-
-        # Return!
-        return (
-            f"{mtl_as_string}"
-            f"illum {self.__illum}\n"
-            f"map_Ka {self.__image_name}\n"
             f"map_Kd {self.__image_name}"
         )
 
