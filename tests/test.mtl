@@ -1,0 +1,6 @@
+newmtl material0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+illum 1
+map_Ka test.jpg
+map_Kd test.jpg
