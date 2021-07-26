@@ -35,8 +35,8 @@
 import os
 from shutil import copyfile
 
-from .MultiD.src.vector import Vector2, Vector3
 from .MultiD.src.triangle import Triangle
+from .MultiD.src.vector import Vector2, Vector3
 
 
 class Generator():
