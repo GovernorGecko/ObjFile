@@ -36,7 +36,7 @@ import os
 from shutil import copyfile
 
 from .MultiD.src.triangle import Triangle
-from .MultiD.src.vector import Vector2, Vector3
+from .MultiD.src.vector import Vector3
 
 
 class Generator():
@@ -168,8 +168,8 @@ class Generator():
             int of which face this Vector2 or Vector3 is at.
         """
 
-        if not type(vector_data).__name__ in ["Vector3", "Vector2"]:
-            raise ValueError("Vector Data must be a Vector3 or Vector2.")
+        if not type(vector_data).__name__ == "Vector":
+            raise ValueError("Vector Data must be a Vector.")
         elif not isinstance(vector_list, list):
             raise ValueError("Vector List must be a list.")
 
