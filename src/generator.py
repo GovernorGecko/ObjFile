@@ -35,8 +35,8 @@
 import os
 from shutil import copyfile
 
-from .MultiD.src.vector import Vector2, Vector3
 from .MultiD.src.triangle import Triangle
+from .MultiD.src.vector import Vector3
 
 
 class Generator():
@@ -168,10 +168,10 @@ class Generator():
             int of which face this Vector2 or Vector3 is at.
         """
 
-        if not isinstance(vector_data, (Vector3, Vector2)):
-            raise ValueError("Vertex Data must be a Vector3 or Vector2.")
+        if not type(vector_data).__name__ == "Vector":
+            raise ValueError("Vector Data must be a Vector.")
         elif not isinstance(vector_list, list):
-            raise ValueError("Vertex List must be a list.")
+            raise ValueError("Vector List must be a list.")
 
         face_data = None
         if vector_data in vector_list:
@@ -190,7 +190,7 @@ class Generator():
         # We have an image name?
         if self.__image_name is None:
             return ""
-        
+
         # Base mtl
         mtl_as_string = "newmtl material0\n"
 
@@ -204,7 +204,6 @@ class Generator():
             map(str, self.__kd.get_list())
         ) + "\n"
 
-        """
         # Specular
         mtl_as_string += "Ks " + " ".join(
             map(str, self.__ks.get_list())
@@ -217,15 +216,6 @@ class Generator():
             f"Ni {self.__ni}\n"
             f"d {self.__d}\n"
             f"illum {self.__illum}\n"
-            f"map_Kd {self.__image_name}"
-        )
-        """
-
-        # Return!
-        return (
-            f"{mtl_as_string}"
-            f"illum {self.__illum}\n"
-            f"map_Ka {self.__image_name}\n"
             f"map_Kd {self.__image_name}"
         )
 
